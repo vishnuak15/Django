@@ -1,0 +1,26 @@
+{% extends 'first_app/base.html' %}
+{% block body_block %}
+{% if user.is_authenticated %}
+
+       <div class="container">
+        <div class="jumbotron">
+          <h1> My Portal </h1>
+        </div>
+        <h2>
+        <div class="djangotwo" align ="center">
+          
+           <a href="{% url 'entitys' %}"><h1>Organizations</h1>  </a>
+         
+           <br>
+
+        </h2>
+          
+
+    </div>
+{% else %}
+<h1>Please login</h1>
+        
+{% endif %}
+            
+{% endblock %}
+        

@@ -1,0 +1,46 @@
+{% extends 'first_app/base.html' %}
+{% block body_block %}
+{% if user.is_authenticated %}
+
+       <div class="container">
+        <div class="jumbotron">
+          <h1>List of Program </h1>
+         
+         
+        </div>
+        <div class="djangotwo">
+            {% if progrm %}
+             {% for acc in progrm %}
+             <br>
+
+             <a href="{% url 'program' pk=acc.pk %}"> <h4><b>{{acc.programe_name}}</b></h4> </a>
+             
+             <br>
+            </a></h4>&nbsp<a href="{% url 'updateprog' pk=acc.pk %}">edit</a> 
+            &nbsp&nbsp&nbsp
+            </a></h4>&nbsp<a href="{% url 'deleteprogram' pk=acc.pk %}">Delete</a> 
+           
+             {% endfor %}
+             {% else %}
+             no data
+     
+            {% endif %}
+            <br>
+            <br>
+            <a href="{% url 'addprog' pk=entity.id %}"><button class="btn btn-success" >Add Program</button></a> 
+
+            <a href="{% url 'users' pk=entity.id %}"><button type="button" class="btn btn-secondary">Users</button></a>
+          
+
+           
+      </div>
+
+    </div>
+{% else %}
+<h1>Please login</h1>
+        
+
+{% endif %}
+            
+{% endblock %}
+        

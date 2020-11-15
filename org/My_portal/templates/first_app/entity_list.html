@@ -1,0 +1,68 @@
+{% extends 'first_app/base.html' %}
+{% block body_block %}
+
+{% if user.is_authenticated %}
+
+       <div class="container">
+        <div class="jumbotron">
+          <h1>List of Organization </h1>
+        </div>
+        <div class="djangotwo">
+            {% if entity %}
+           
+              <table class="table">
+                
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">buisness reg no</th>
+                    <th scope="col">Tax reg no</th>
+                    <th scope="col">address</th>
+                    <th scope="col">Contact no</th>
+                    <th scope="col">   </th>
+                    <th scope="col">   </th>
+                  </tr>
+                </thead>
+
+                {% for acc in entity %}
+                
+                <tbody>
+                  <tr>
+                    <td><a href="{% url 'prog'  pk=acc.pk  %}">{{acc.entity_name}}</a></td>
+                    <td>{{acc.buisness_reg_no}}</td>
+                    <td>{{acc.Tax_reg_no}}</td>
+                    <td>{{acc.address}}</td>
+                    <td>{{acc.contact_no}}</td>
+                    <td><a href="{% url 'updatentity' pk=acc.pk %}">edit</a> </td>
+                    <td><a href="{% url 'deletentity' pk=acc.pk %}"><button class="btn btn-danger">Delete</button></a></td>
+                    
+                  </tr>
+                  {% endfor %}
+                  
+                  
+                </tbody>
+                
+              </table>
+              
+        
+          
+            
+             <br>
+
+             
+             {% else %}
+             no data
+     
+            {% endif %}
+            <br>
+            <a href="{% url 'addorg' %}"><button class="btn btn-success">ADD</button>
+      </div>
+
+    </div>
+{% else %}
+<h1>Please login</h1>
+        
+{% endif %}
+            
+{% endblock %}
+        
